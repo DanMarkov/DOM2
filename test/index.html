@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Element classList -->
+    <!-- element.classList.add -->
+    <!-- <ul id="shopping-list">
+        <li id="first-item">Carrots</li>
+        <li>Avocado</li>
+    </ul>
+    <script>
+        const element = document.querySelector('#first-item');
+        element.classList.add('highlighted');
+        // В элемент `<li id="first-item">Carrots</li>` будет добавлен `class="highlighted"`.
+        // С помощью `.classList` вы можете получить доступ только к одному элементу. Если у вас была коллекция элементов **NodeList**, то необходимо проитерироваться по ней с помощью `forEach`.
+    </script> -->
+
+    <!-- element.classList.remove -->
+    <!-- Точно так же вы можете использовать метод `element.classList.remove()` для удаления класса. -->
+    <!-- <ul id="shopping-list">
+        <li id="first-item" class="highlighted vegetables">Carrots</li>
+        <li>Avocado</li>
+    </ul>
+     Мы можем удалить класс highlighted у элемента с идентификатором #first-item. 
+    <script>
+        const element = document.querySelector('#first-item');
+        element.classList.remove('highlighted');
+    </script> -->
+
+    <!-- element.classList.contains -->
+    <!-- Иногда необходимо проверить, имеет ли тот или иной элемент класс.  -->
+    <!-- <div id="box" class="show">123</div>
+    <script>
+        const box = document.querySelector('#box');
+        box.classList.contains('show'); // true
+        box.classList.contains('active') // false
+    </script> -->
+
+    <!-- element.classList.toggle -->
+    <!-- Также вместо проверки наличия определенного класса перед его удалением и проверки наличия определенного класса перед его добавлением вы можете использовать встроенный метод toggle: -->
+    <!-- <div id="box">123</div>
+
+    <script>
+        const box = document.querySelector('#box');
+        box.addEventListener('click', () => {
+            box.classList.toggle('active'); // adds/removes the class active
+        })
+        // Каждый раз, когда вы вызываете метод toggle, он либо добавляет, либо удаляет класс в зависимости от того, был данный класс в DOM элементе или нет.
+    </script> -->
+
+    <!-- Attributes -->
+    <!-- HTML элементы могут иметь атрибуты: class, id и disabled, которые являются одними из наиболее распространенных. -->
+
+    <!-- element.getAttribute -->
+    <!-- Метод `element.getAttribute(key)` используется для получения значения определенного атрибута по его ключу. -->
+    <!-- <div id="banner">
+        <button disabled="disabled" id="login">Login</button>
+    </div>
+
+    <script>
+        const banner = document.querySelector('#banner');
+        banner.getAttribute('id'); // "banner"
+        banner.getAttribute('disabled'); // null (attribute not found on this element)
+
+        const button = document.querySelector('#login');
+        button.getAttribute('disabled'); // 'disabled'
+    </script> -->
+
+    <!-- element.removeAttribute -->
+    <!-- Используется для удаления атрибута. -->
+    <!-- <script>
+        button.removeAttribute('disabled');
+        // Эта запись удалит атрибут disabled с кнопки.
+    </script> -->
+
+    <!-- element.hasAttribute -->
+    <!-- Метод используется для проверки существования атрибута. Функция всегда возвращает логическое значение. -->
+    <!-- <script>
+        button.hasAttribute('disabled'); // ture or false
+
+    </script> -->
+
+    <!-- Style -->
+    <!-- Используя DOM, вы можете обновить любое CSS свойство через JavaScript.  -->
+    <!-- Изменить цвет фона -->
+    <!-- <div id="banner">WELCOME!</div>
+    <script>
+        const banner = document.querySelector('#banner');
+        banner.style.backgroundColor = 'red';
+        // Очень похоже на то, что было в CSS. Разница только в использовании нотации camelCase, вместо kebab-case.
+    </script> -->
+
+    <!-- Отображение/скрытие элемента -->
+    <!-- Обычно JavaScript используется для отображения или скрытия элемента по клику (примеры будут ниже). Вы можете сделать это двумя способами:
+    1. использование классов CSS, которые можно добавлять/удалять в JavaScript с помощью classList
+    2. использование JavaScript для изменения стилей элемента через атрибут style -->
+    <!-- В примере ниже описан второй вариант. -->
+
+    <!-- <div id="banner">WELCOME!</div>
+    <script>
+        const banner = document.querySelect('#banner');
+        // hide element
+        banner.style.display = 'none';
+
+        // show element by resetting its display 
+        banner.style.display = '';
+    </script> -->
+
+    <!-- Доступ к родительскому элементу -->
+    <!-- element.parentElement -->
+    <!-- Доступ к родительскому элементу -->
+    <!-- <div class="article">
+        <h1>Hello World!</h1>
+        <p>Lorem Ipsum</p>
+    </div>
+
+    <script>
+        const h1 =document.querySelector('h1');
+        console.lop(h1.parentElement); // <div class="article">...</div>
+    </script> -->
+    
+    <!-- element.closest() -->
+    <!-- Метод `element.closest("CSS-selector")` возвращает ближайшего родителя, который соответствует указанному селектору. Он ищет родительские элементы и поднимается на уровень выше один за другим. -->
+    <!-- <div class="main">
+        <div class="banner">
+            <h1>Hello World!</h1>
+        </div>
+    </div>
+
+    <script>
+        const h1 = document.querySelector('h1');
+        console.log(h1.closest('.main')); // <div class="main">...</div>
+        // Эта запись будет искать ближайшего родителя, который соответствует селектору `.main`.
+    </script> -->
+
+    <!-- Добавление тега к существующему -->
+    <!-- Есть несколько способов добавления HTML к уже существующему элементу. Использование innerHTML не самая лучшая практика, т.к. браузер при таком подходе будет заново перерисовывать все содержимое элемента. -->
+
+    <!-- <div class="container">
+        <p>Hello World!</p>
+    </div>
+
+    <script>
+        const div = document.querySelector('#container');
+        div.innerHTML += `<p>Another Paraghraph</p>`;
+        // В этой строке div.innerHTML += `<p>Another paragraph</p>` присходит замена исходного текста в новый. Вместо этого нам нужен метод, который позволит нам добавить немного HTML в конец или начало элемента.
+        // append - добавление чего-либо в конце
+        // prepend - добавление чего-то в начале
+    </script> -->
+
+    <!-- element.insertAdjacentHTML(position, htmlString) -->
+    <!-- <div id="job-positions">
+        <div class="position">2009-2013</div>
+        <div class="position">2013-2015</div>
+    </div> -->
+
+    <!-- <script>
+        // Вы можете добавить тег в конец с помощью beforeend:
+        const positions = document.querySelector('#job-positions');
+        positions.insertAdjacentHTML('beforeend', `<div class="position">2015-2020</div>`);
+    </script>
+    Это добавит строку html в конец элемента #job-positions. Новый DOM будет выглядеть следующим образом:
+    <div id="job-positions">
+        <div class="position">2009-2013</div>
+        <div class="position">2013-2015</div>
+        <div class="position">2015-2020</div>
+      </div> -->
+      <!-- <script>
+        // Вы можете добавить тег в начало с помощью afterbegin:
+        const positions = document.querySelector('#job-positions');
+        positions.insertAdjacentHTML('afterbegin', `<div class="position">2007-2009</div>`);
+      </script>
+      Новый DOM будет выглядеть следующим образом:
+      <div id="job-positions">
+        <div class="position">2007-2009</div>
+        <div class="position">2009-2013</div>
+        <div class="position">2013-2015</div>
+      </div> -->
+
+      <!-- Используйте обратные кавычки для htmlString -->
+      <!-- Второй аргумент метода ожидает `htmlString`, который будет добавлен в начало или конец DOM. -->
+      <!-- Достаточно часто htmlString занимает несколько строк, поэтому рекомендуется использовать шаблоны строк. -->
+      <!-- <script>
+        element.insertAdjacentHTML("beforeend", `<p>An example of a...
+    ... very long paragraph</p>`);
+      </script>
+      Шаблоны строк поддерживают многострочные строки, а двойные и одинарные кавычки нет. -->
+
+      <!-- Массив в DOM -->
+      <!-- Частая практика, когда есть массив элементов, который вы хотели бы вставить в DOM. Для этого вы можете использовать методы forEach и insertAdjacentHTML: -->
+      <!-- <ul id="apps-list"></ul>
+      <script>
+        const apps = ['Calculator', 'Phone', 'Messages'];
+        const list = document.querySelector('#apps-list');
+
+        apps.forEach(app => {
+            list.insertAdjacentHTML('beforeend', `<li>${app}</li>`);
+        });
+      </script>
+      Результирующий DOM будет:
+      <ul id="apps-list">
+        <li>Calculator</li>
+        <li>Phone</li>
+        <li>Messages</li>
+      </ul> -->
+
+      <!-- innerHTML vs insertAdjacentHTML -->
+      <!-- Оба метода имеют свое применение: 
+        1. если вы хотите добавить HTML и перезаписать все предыдущие значения, используйте innerHTML
+        2. если вы хотите сохранить исходный HTML и добавить новые элементы в начало или конец, используйте insertAdjacentHTML-->
+
+        <!-- Безопасность работы с AdjacentHTML -->
+        <!-- Метод insertAdjacentHTML представляет такой же риск для безопасности, что и innerHTML -->
+        <!-- Вы не должны использовать этот метод, если данные, с которыми вы работаете, исходят от пользователя -->
+
+    <!-- Императивное создание элементов -->
+    <!-- document.createElement() -->
+    <!-- В HTML-документах создаёт элемент c тем тегом, который указан в аргументе. Ранее мы вставляли тег в виде строки. -->
+    <!-- <script>
+        const paragraph = document.createElement('p');
+        paragraph.classList.add('text-center');
+        paragraph.textContent('Hello World!');
+        console.log(paragraph); // <p class="text-center">Hello World</p> (as an element not as a string)
+        
+        // Затем вы можете использовать метод element.appendChild(), чтобы вставить его в конец списка дочерних элементов указанного родительского узла. 
+        // Create new paragraph and insert it at the end of the body document
+        document.body.appendChild(paragraph);
+        // C точки зрения производительности особой разницы в использовании нет. Необходимо знать данный синтаксис, т.к. он может быть использован в различных библиотеках/фреймворках при динамическом внедрении скрипта или таблицы стилей.
+    </script> -->
+
+    <!-- Add Event Listener -->
+    <!-- Браузер позволяет запускать функцию, которую вы определяете каждый раз, когда пользователь нажимает на какой-нибудь элемент.  -->
+    <!-- <button id="app-button">Click me!</button>
+    
+    <script>
+        const button = document.querySelector('#app-button');
+        button.addEventListener('click', () => {
+            // do something when the button is clicked.
+            console.log('Button clicked');
+        });
+        // Метод  `element.addEventListener(eventType, callback)` позволяет вам дождаться события на определенном элементе. Как только событие произойдет, `callback` функция будет выполнена.
+    </script> -->
+
+    <!-- Каким будет результат? -->
+    <!-- <button class="button"></button>
+
+    <script>
+        const button = document.querySelector('button');
+        console.log('A');
+        button.addEventListener('click', () => {
+            console.log('B');
+        });
+        console.log('C');
+
+        // JavaScript код по-прежнему выполняется сверху вниз, однако этот callback будет выполнен, как только пользователь кликнет по кнопке.
+        "A"
+        "C"
+    </script>  -->
+
+    <!-- Event callback -->
+    <!-- задизабленность кнопки по клику -->
+    <!-- Допустим, у вас есть кнопка, и вы хотите отключить ее по клику. -->
+    <!-- <button id="app-button">Log in</button>
+    <script>
+        // const button = document.querySelector('#app-button');
+        // button.addEventListener('click', () => {
+        //     button.setAttribute('disabled', 'disabled');
+        // });
+        // Код внутри обратного вызова - это обычный код JavaScript, который будет выполняться при определенных условиях. Это условие возникает каждый раз, когда пользователь нажимает на кнопку.
+
+        // задизабленность кнопки + добавление текста в момент загрузки данных (прелоадер)
+        // Вы хотите сделать кнопку неактивной и добавить текст о загрузке данных `Loading...`.
+        // const button = document.querySelector('#app-button');
+        // button.addEventListener('click', () => {
+        //     button.setAttribute('disabled', 'disabled');
+        //     button.textContent = 'Loading...';
+        // });
+
+        // Вход в систему по клику
+        // Данный пример добавляет `setTimeout` внутрь обратного вызова. Например, вы хотите поприветствовать пользователя, через две секунды после того, как он нажмет на кнопку:
+        const button = document.querySelector('#app-button');
+        button.addEventListener('click', () => {
+            setTimeout(()=>{
+                console.log('Hello, friend!');
+            }, 2000);
+        });
+
+    </script> -->
+
+    <!-- Event details -->
+    <!-- Когда пользователь кликает по элементу, мы можем запустить обратный вызов. Этот обратный вызов получит от браузера один аргумент - event details. -->
+    <!-- Сведения о событии содержат информацию о только что произошедшем событии. Например, для события click: 
+    1. X положение мыши по оси х при нажатии
+    2. Y положение мыши по оси у при нажатии
+    3. время срабатывания клика
+    4. булевый тип. была ли нажата клавиша ctrl при срабатывании щелчка
+    5. булевый тип. была ли нажата клавиша shift при срабатывании щелчка
+    -->
+    <!-- Также есть одно свойство, которое вы будете использовать довольно часто - currentTarget.  -->
+    <!-- <script>
+        button.addEventListener('click', event => {
+            console.log(event);  // details of the click event
+        });
+    </script> -->
+    
+    <!-- откуда берется event? -->
+    <!-- event всегда предоставляется браузером. И только вам решать, будете вы считывать эти действия или нет. Для каждого добавляемого прослушивателя событий есть некоторые сведения о событии, которые вы можете прочитать, указав параметр event. -->
+    <!-- <script>
+        button.addEventListener('click', event => {
+            // event callback
+        });
+    </script> -->
+
+    <!-- event.currentTarget -->
+    <!-- Относится к элементу, к которому был присоединен обработчик событий. Это особенно полезно, когда вы добавляете события на несколько элементов. -->
+    <!-- <script>
+        // Допустим, вы хотите получить доступ к тексту кнопки. Вы можете сделать это, обратившись к свойству textContent, потому что event.currentTarget возвращает объект из DOM.
+        button.addEventListener('click', event => {
+            console.log(event.currentTarget.textContent); 
+        });
+    </script> -->
+
+    <!-- Несколько элементов -->
+    <!-- Что, если мы хотим выполнить одну и ту же логику каждый раз, когда нажимается одна из нескольких кнопок? -->
+    <button>Travel</button>
+    <button>Camping</button>
+    <button>Relaxation</button>
+    <script>
+        // Данный код добавит прослушиватель событий только к первой кнопке:
+        // const button = document.querySelector('button');
+        // button.addEventListener('click', event => {
+        //     console.log(event.currentTarget); // <button>Travel</button>
+        // });
+        // Нам необходимо заменить запись querySelector на querySelectorAll. Также нам необходимо проитерироваться по каждому элементу, т.к. данный метод возвращает NodeList.
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => {
+            button.addEventListener('click', event => {
+                console.log(event.currentTarget); // the <button> that was clicked
+            });
+        });
+    </script>
+</body>
+</html>
